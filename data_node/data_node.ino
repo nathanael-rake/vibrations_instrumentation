@@ -64,7 +64,6 @@ void setup() {
   byte currentAccelConfig = bno.read8(bno.BNO055_ACCEL_DATA_X_LSB_ADDR) & 0xFC; //read the 6 msb of the accel config
   byte newAccelConfig = currentAccelConfig | 0x3; //update the config to have 16G acceleration
   bno.write8(bno.BNO055_ACCEL_DATA_X_LSB_ADDR, newAccelConfig); //write the update to the config register
-  //bno.setMode(bno.OPERATION_MODE_AMG);
   bno.setMode(bno.OPERATION_MODE_AMG);
 
   //Use the external crystal
