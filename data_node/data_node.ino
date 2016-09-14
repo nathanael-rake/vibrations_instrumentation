@@ -85,23 +85,34 @@ void loop() {
     digitalWrite(ledPin, ledState);
     
     //print the acceleration data
-    imu::Vector<3> acceleration = bno.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER); //get the accel data
-    Serial.print(acceleration.x());
-    Serial.print("\t");
-    
-    Serial.print(acceleration.y());
-    Serial.print("\t");
-    Serial.print(acceleration.z());
-    Serial.print("\t");
+//    imu::Vector<3> acceleration = bno.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER); //get the accel data
+//    Serial.print(acceleration.x());
+//    Serial.print("\t");
+//    Serial.print(acceleration.y());
+//    Serial.print("\t");
+//    Serial.print(acceleration.z());
+//    Serial.print("\t");
+//
+//    //print the gyro data
+//    imu::Vector<3> angularVelocity = bno.getVector(Adafruit_BNO055::VECTOR_GYROSCOPE);
+//    Serial.print(angularVelocity.x());
+//    Serial.print("\t");
+//    Serial.print(angularVelocity.y());
+//    Serial.print("\t");
+//    Serial.print(angularVelocity.z());
+//    Serial.print("\n");
 
-    //print the gyro data
-    imu::Vector<3> angularVelocity = bno.getVector(Adafruit_BNO055::VECTOR_GYROSCOPE);
-    Serial.print(angularVelocity.x());
-    Serial.print("\t");
-    Serial.print(angularVelocity.y());
-    Serial.print("\t");
-    Serial.print(angularVelocity.z());
-    Serial.print("\n");
+      //test the bit accessing
+      imu::Vector<3> acceleration = bno.getVector(Adafruit_BNO055::VECTOR_GYROSCOPE); //get the accel data
+      double realX = acceleration.x();
+      int16_t myX = (int16_t)(realX*900);
+      int8_t myXLSB = myX;
+      int8_t myXMSB = myX >> 8;
+
+      Serial.print(realX);Serial.print("\t");
+      Serial.print(myX,HEX);Serial.print("\t");
+      Serial.print(myXMSB,HEX);Serial.print("\t");
+      Serial.print(myXLSB,HEX);Serial.print("\n");
   }
 
 }
