@@ -88,6 +88,7 @@ void loop() {
     imu::Vector<3> acceleration = bno.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER); //get the accel data
     Serial.print(acceleration.x());
     Serial.print("\t");
+    
     Serial.print(acceleration.y());
     Serial.print("\t");
     Serial.print(acceleration.z());
